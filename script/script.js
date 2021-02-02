@@ -1,10 +1,26 @@
+
+// detects buttons 
 var drumButtons = document.querySelectorAll(".drum").length
 
-for(var i = 0; i < drumButtons; i++){
+for (var i = 0; i < drumButtons; i++) {
 
-document.querySelectorAll(".drum")[i].addEventListener("click", function() {
-    var buttonHTML = this.innerHTML;
-    switch (buttonHTML) {
+    document.querySelectorAll(".drum")[i].addEventListener("click", function () {
+        var buttonHTML = this.innerHTML;
+        
+        sounds(buttonHTML);
+    });
+
+}
+
+//keyboard press
+
+document.addEventListener("keydown", function (event) {
+    sounds(event.key)
+});
+
+function sounds(key){
+
+    switch (key) {
         case "w":
             var tom1 = new Audio("sounds/tom-1.mp3");
             tom1.play();
@@ -37,9 +53,6 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function() {
             console.log(innerHTML)
             break;
     }
-
-});
-
 }
 
 
