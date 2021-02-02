@@ -1,5 +1,5 @@
 
-// detects buttons 
+//  click on button sounds 
 var drumButtons = document.querySelectorAll(".drum").length
 
 for (var i = 0; i < drumButtons; i++) {
@@ -8,6 +8,8 @@ for (var i = 0; i < drumButtons; i++) {
         var buttonHTML = this.innerHTML;
         
         sounds(buttonHTML);
+
+        animation(buttonHTML)
     });
 
 }
@@ -16,6 +18,7 @@ for (var i = 0; i < drumButtons; i++) {
 
 document.addEventListener("keydown", function (event) {
     sounds(event.key)
+    animation(event.key)
 });
 
 function sounds(key){
@@ -55,4 +58,10 @@ function sounds(key){
     }
 }
 
-
+function animation(currentkey){
+    var activeButton = document.querySelector("." + currentkey);
+    activeButton.classList.add("pressed");
+    setTimeout(() => {
+        activeButton.classList.remove("pressed")
+    }, 100);
+}
